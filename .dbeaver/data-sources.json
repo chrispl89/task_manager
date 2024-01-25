@@ -1,0 +1,32 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-18d406e1c6d-20ed7c3ce8872fa7": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "test.db",
+			"save-password": true,
+			"configuration": {
+				"database": "C:\\python\\flask_todo\\instance\\test.db",
+				"url": "jdbc:sqlite:C:\\python\\flask_todo\\instance\\test.db",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800
+		}
+	}
+}

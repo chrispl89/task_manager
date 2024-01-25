@@ -15,59 +15,57 @@
     <div style="margin-top: 50px;" class="ui container">
         <h1 class="ui center aligned header">To Do App</h1>
 
+        <!-- Form for Adding Todos -->
         <form class="ui form" action="/add" method="post">
-            <div class="field">
-                <label>Title</label>
-                <input type="text" name="title" placeholder="Enter Todo...">
-            </div>
-            <div class="field">
-                <label>Description</label>
-                <textarea name="description" placeholder="Enter Description..."></textarea>
-            </div>
-            <div class="field">
-                <label>Deadline</label>
-                <input type="datetime-local" name="deadline">
-            </div>
-            <div class="field">
-                <label>Author</label>
-                <input type="text" name="author" placeholder="Enter Author...">
-            </div>
-            <div class="field">
-                <label>Assigned To</label>
-                <input type="text" name="assigned_to" placeholder="Enter Assigned To...">
-            </div>
+            <!-- Form fields for adding todos -->
+            <!-- ... -->
+
             <button class="ui blue button" type="submit">Add</button>
         </form>
 
-
-
         <hr>
 
+        <!-- Todo List -->
         {% for todo in tasks %}
             <div class="ui segment">
-                <p class="ui big header">ID: {{ todo.id }} | {{ todo.title }}</p>
-
-                {% if todo.complete == False %}
-                    <span class="ui gray label">Not Complete</span>
-                {% else %}
-                    <span class="ui green label">Completed</span>
-                {% endif %}
-
-                <div class="description-container">
-                    <h3 class="ui header">Description:</h3>
-                    <p class="description-field">{{ todo.description | safe }}</p>
-                </div>
-                <p>Deadline: {{ todo.deadline.strftime('%Y-%m-%d %H:%M:%S') }}</p>
-                <p>Created At: {{ todo.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
-                <p>Author: {{ todo.author }}</p>
-                <p>Assigned To: {{ todo.assigned_to }}</p>
+                <!-- Display Todo Details -->
+                <!-- ... -->
 
                 <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
                 <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
             </div>
         {% endfor %}
 
+        <!-- Login Form -->
+        <form class="ui form" action="/login" method="post">
+            <h2 class="ui center aligned header">Login</h2>
+            <!-- Login form fields -->
+            <!-- ... -->
 
+            <button class="ui blue button" type="submit">Login</button>
+        </form>
+
+       {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="ui message">
+              <ul class="list">
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endwith %}
+
+
+        <!-- Registration Form -->
+        <form class="ui form" action="/register" method="post">
+            <h2 class="ui center aligned header">Register</h2>
+            <!-- Registration form fields -->
+            <!-- ... -->
+
+            <button class="ui blue button" type="submit">Register</button>
+        </form>
     </div>
 </body>
 

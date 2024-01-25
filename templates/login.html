@@ -4,22 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - Todo App</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 </head>
 
 <body>
-    <h1>Login</h1>
+    <div style="margin-top: 50px;" class="ui container">
+        <h2 class="ui center aligned header">Login</h2>
 
-    <form action="{{ url_for('auth.login') }}" method="post">
-        {{ form.hidden_tag() }}
-        <label for="email">Email:</label>
-        {{ form.email() }}
+        <form class="ui form" action="/login" method="post">
+            <!-- Flash messages for errors or success messages -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="ui error message">
+                        <ul class="list">
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endwith %}
 
-        <label for="password">Password:</label>
-        {{ form.password() }}
+            <div class="field">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Enter your username" required>
+            </div>
 
-        <button type="submit">Login</button>
-    </form>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <button class="ui blue button" type="submit">Login</button>
+        </form>
+
+        <p class="ui center aligned header">
+            Don't have an account? <a href="/register">Register here</a>.
+        </p>
+    </div>
 </body>
 
 </html>
