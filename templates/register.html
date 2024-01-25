@@ -1,7 +1,5 @@
-<!-- Registration Form -->
 <form class="ui form" action="/register" method="post">
     <h2 class="ui center aligned header">Register</h2>
-    <!-- Registration form fields -->
     {{ form.hidden_tag() }}
     <div class="field">
         <label>{{ form.username.label }}</label>
@@ -22,7 +20,6 @@
 
     <button class="ui blue button" type="submit">Register</button>
 
-    <!-- Cancel button to go back to the home page -->
     <a class="ui grey button" href="{{ url_for('home') }}">Cancel</a>
 </form>
 
@@ -38,5 +35,4 @@
   {% endif %}
 {% endwith %}
 
-<!-- Link to login page -->
 <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
