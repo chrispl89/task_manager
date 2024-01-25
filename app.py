@@ -14,8 +14,8 @@ class Todo(db.Model):
     complete = db.Column(db.Boolean)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     deadline = db.Column(db.DateTime)
-    author = db.Column(db.String(50))  # Dodane pole 'author'
-    assigned_to = db.Column(db.String(50))  # Dodane pole 'assigned_to'
+    author = db.Column(db.String(50))
+    assigned_to = db.Column(db.String(50))
 
     def __init__(self, title, description, complete=False, deadline=None, author=None, assigned_to=None):
         self.title = title
@@ -93,7 +93,6 @@ def update(id):
     if request.method == 'POST':
         task.title = request.form['title']
         task.description = request.form['description']
-        # Ustawienie wartości complete w zależności od formularza (np. checkbox)
         task.complete = 'complete' in request.form
         db.session.commit()
         return redirect('/')
